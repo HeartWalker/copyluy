@@ -22,6 +22,6 @@ export function typeNumber(data:any) {
     if(data === undefined) {
         return 2;
     }
-    var a = numberMap[__type(data)];
+    var a = numberMap[__type.call(data)];
     return a || 8;
 }

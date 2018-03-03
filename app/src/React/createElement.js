@@ -29,7 +29,7 @@ function createElement(type: string | Function, config, ...children: array) {
     let props = {},
         key = null,
         ref = null,
-        childrenLength = children.length;
+        childLength = children.length;
 
     if(config != null){
         //巧妙的将key转化为字符串
@@ -49,7 +49,12 @@ function createElement(type: string | Function, config, ...children: array) {
         }
     }
 
+    if (childLength === 1) {
+        props.children = typeNumber(children[0]) > 2 ? children[0] : []
 
+    } else if (childLength > 1) {
+        props.children = children
+    }
 
     /**设置defaultProps */
     let defaultProps = type.defaultProps;
